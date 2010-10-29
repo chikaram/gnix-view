@@ -85,7 +85,7 @@ class Gnix_View_AutoEscaper_Container implements IteratorAggregate, Countable, A
         try {
             return new ArrayIterator($this->_data);
         } catch (InvalidArgumentException $e) {
-            // This will happen when you set scalar value to foreach like 'foreach ($string as $var)'
+            // This happens when you set a scalar value to foreach like 'foreach ($string as $var)'
             $backtraces = debug_backtrace();
             throw new Gnix_View_AutoEscaper_Exception(
                 'Invalid argument supplied for foreach() in ' . $backtraces[0]['file'] . ' on line ' . $backtraces[0]['line']
