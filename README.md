@@ -18,3 +18,9 @@ Write the code below before you start MVC:
     Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer')->setView($view);
 
 That's all and you'll be free from '$this->escape()' that messes up your view templates!
+
+    // output: <p>&lt;script&gt;alert(&#039;XSS&#039;)&lt;/script&gt;</p>
+    <p><?= $this->tweet->getText() ?></p>
+    
+    // output: <p><script>alert('XSS')</script></p>
+    <p><?= $this->unescape($this->tweet->getText()) ?></p>
